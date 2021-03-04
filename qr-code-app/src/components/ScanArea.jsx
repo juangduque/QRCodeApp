@@ -2,14 +2,10 @@ import React, {useState} from 'react';
 import {Fab, TextField, Grid} from '@material-ui/core';
 import { GetApp} from '@material-ui/icons';
 import QRcode from 'qrcode.react';
+import FileUpload from './FileUpload.jsx';
 
 function ScanArea( props ) {
-  const qr = props.url ; //replace 'qr' with 'props.url'.
-
-  // const [qr, setQr] = useState( props.url ); //replace 'qr' with 'props.url'.
-  // const handleChange = (event) => {
-  //     setQr(event.target.value);
-  // };
+  const qr = props.url ; 
   const downloadQR = () => {
       const canvas = document.getElementById("myqr");
       const pngUrl = canvas
@@ -25,14 +21,13 @@ function ScanArea( props ) {
 
   return (
     <div>
-      <span>QR Generator</span>
       
-      <div style={{marginTop:30}}>
-        {/* <TextField onChange={ handleChange } style={{width:320}} */}
+      {/* <div style={{marginTop:30}}>
         <TextField onChange={ props.onChange } style={{width:320}}
         value={ qr } label="QR content" size="large" variant="outlined" color="primary" 
         />
-      </div>
+      </div> */}
+      <FileUpload />
 
       <div>
         {
@@ -42,8 +37,7 @@ function ScanArea( props ) {
             value={ qr } 
             size={320}
             includeMargin={true}
-          /> :
-          <p>No QR code preview</p>
+          /> :null
         }
       </div>
       <div>
