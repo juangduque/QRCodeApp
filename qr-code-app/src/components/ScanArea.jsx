@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import {Fab, TextField, TextareaAutosize, Grid} from '@material-ui/core';
-import {ArrowBack, GetApp} from '@material-ui/icons';
-import { Link } from "react-router-dom";
+import {Fab, TextField, Grid} from '@material-ui/core';
+import { GetApp} from '@material-ui/icons';
 import QRcode from 'qrcode.react';
 
 function ScanArea( props ) {
-  const [qr, setQr] = useState( props.url );
-  const handleChange = (event) => {
-      setQr(event.target.value);
-  };
+  const qr = props.url ; //replace 'qr' with 'props.url'.
+
+  // const [qr, setQr] = useState( props.url ); //replace 'qr' with 'props.url'.
+  // const handleChange = (event) => {
+  //     setQr(event.target.value);
+  // };
   const downloadQR = () => {
       const canvas = document.getElementById("myqr");
       const pngUrl = canvas
@@ -27,8 +28,9 @@ function ScanArea( props ) {
       <span>QR Generator</span>
       
       <div style={{marginTop:30}}>
-        <TextField onChange={handleChange} style={{width:320}}
-        value={qr} label="QR content" size="large" variant="outlined" color="primary" 
+        {/* <TextField onChange={ handleChange } style={{width:320}} */}
+        <TextField onChange={ props.onChange } style={{width:320}}
+        value={ qr } label="QR content" size="large" variant="outlined" color="primary" 
         />
       </div>
 
@@ -37,7 +39,7 @@ function ScanArea( props ) {
           qr ?
           <QRcode 
             id="myqr"
-            value={qr} 
+            value={ qr } 
             size={320}
             includeMargin={true}
           /> :
