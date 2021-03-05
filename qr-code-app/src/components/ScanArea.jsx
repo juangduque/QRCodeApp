@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
-import {Fab, TextField, Grid} from '@material-ui/core';
+import React from 'react';
+import {Fab, Grid} from '@material-ui/core';
 import { GetApp} from '@material-ui/icons';
 import QRcode from 'qrcode.react';
 import FileUpload from './FileUpload.jsx';
 
 function ScanArea( props ) {
-  const qr = props.url ; 
   const downloadQR = () => {
       const canvas = document.getElementById("myqr");
       const pngUrl = canvas
@@ -21,20 +20,19 @@ function ScanArea( props ) {
 
   return (
     <div>
-      
-      {/* <div style={{marginTop:30}}>
-        <TextField onChange={ props.onChange } style={{width:320}}
-        value={ qr } label="QR content" size="large" variant="outlined" color="primary" 
-        />
-      </div> */}
-      <FileUpload />
+      <FileUpload 
+        onChange={ props.onChange }
+        fileName={ props.fileName }
+        fileNameOnChange={ props.fileNameOnChange }
+        location={ props.location } 
+      />
 
       <div>
         {
-          qr ?
+          props.url ?
           <QRcode 
             id="myqr"
-            value={ qr } 
+            value={ props.url } 
             size={320}
             includeMargin={true}
           /> :null
@@ -42,7 +40,7 @@ function ScanArea( props ) {
       </div>
       <div>
         {
-          qr ? 
+          props.url ? 
           <Grid container>              
               <Grid item xs={3}>
               <Fab onClick={downloadQR} style={{marginLeft:10}} color="primary">
