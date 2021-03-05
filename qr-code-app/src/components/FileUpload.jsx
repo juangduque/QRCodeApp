@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-import Progress from './Progress.jsx';
 import {app} from '../js/fireBaseConfig.js';
 
 const FileUpload = ( props ) => {
@@ -54,7 +53,7 @@ const FileUpload = ( props ) => {
         
 
       }else if( file.name === undefined){
-        alert("You haven't uploaded fila"); // PONER MODAL
+        alert("You haven't selected file"); // PONER MODAL
       }else{
         alert("File format don't allowed, must be pdf, png, jpg or jpeg");// PONER MODAL
       }
@@ -66,14 +65,14 @@ const FileUpload = ( props ) => {
   return (
     <Fragment>
       <form onSubmit={onSubmit}>
-        <div className='custom-file mb-4'>
+        <div className='custom-file fileUploadArea'>
           <input
+            className='custom-file-input truncate fileInput'
             type='file'
-            className='custom-file-input'
             id='customFile'
             onChange={onChange}
           />
-          <label className='custom-file-label' htmlFor='customFile'>
+          <label className='custom-file-label truncate fileLabel' htmlFor='customFile'>
             { props.fileName }
           </label>
         </div>
@@ -81,7 +80,7 @@ const FileUpload = ( props ) => {
         <input
           type='submit'
           value='Upload'
-          className='btn btn-primary btn-block mt-4'
+          className='btn uploadButton'
         />
       </form>
     </Fragment>

@@ -1,0 +1,63 @@
+@import "../lib/variables";
+
+.scanAreaContainer{
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.fileUploadArea{
+  height: auto;
+  width: 100%;
+  min-width: 250px;
+  max-width: 600px;
+  width: 98%;
+  margin: 20px auto;
+  & .fileInput{
+    height: 30px;
+    width: calc(100% - 70px);
+  }
+  & .fileLabel{
+    font-size: 1.5rem;
+  }
+}
+
+.uploadButton{
+  position: relative;
+  display: block;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.QRVisualization{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.QRLabel{
+  padding-left: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.displayQRCodeContainer{
+  height: 308px;
+  width: 308px;
+  border: 2px solid black;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.downloadBtnContainer{
+  margin: 20px 0;
+}

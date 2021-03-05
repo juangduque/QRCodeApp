@@ -1,0 +1,15 @@
+@import "../lib/variables";
+
+.headerSection{
+  background: linear-gradient(180deg, $header-color 0%, rgba(11, 181, 219, 0) 100%);
+  height: auto;
+  padding-top: 60px;
+  & h1{
+    margin: 0;
+  }
+  & h2{
+    font-size: 2rem;
+    margin: 0 10px;
+    margin-top: 20px;
+  }
+}

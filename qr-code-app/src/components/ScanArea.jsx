@@ -1,6 +1,4 @@
-import React from 'react';
-import {Fab, Grid} from '@material-ui/core';
-import { GetApp} from '@material-ui/icons';
+import React, { Fragment } from 'react';
 import QRcode from 'qrcode.react';
 import FileUpload from './FileUpload.jsx';
 
@@ -19,38 +17,47 @@ function ScanArea( props ) {
   };
 
   return (
-    <div>
+    <div className="scanAreaContainer">
+      {/* Upload file section */}
       <FileUpload 
         onChange={ props.onChange }
         fileName={ props.fileName }
         fileNameOnChange={ props.fileNameOnChange }
         location={ props.location } 
       />
+      
+      {/* QR Section */}
+      <div className="QRVisualization">
+        {/* Display QR Section */}
+        <div >
+          {
+            props.url ?
+            <div>
+              <p className="QRLabel">QR code generated</p>
+              <div className="displayQRCodeContainer">
+                <QRcode 
+                  id="myqr"
+                  value={ props.url } 
+                  size={300}
+                  includeMargin={true}
+                /> 
+              </div>
+            </div>
+            : null
+          }
+        </div>
 
-      <div>
-        {
-          props.url ?
-          <QRcode 
-            id="myqr"
-            value={ props.url } 
-            size={320}
-            includeMargin={true}
-          /> :null
-        }
-      </div>
-      <div>
-        {
-          props.url ? 
-          <Grid container>              
-              <Grid item xs={3}>
-              <Fab onClick={downloadQR} style={{marginLeft:10}} color="primary">
-                <GetApp/>
-              </Fab>
-              </Grid>
-          </Grid> :
-          ''
-        }
-      </div>
+        {/* Download QR code section */}
+        <div>
+          {
+            props.url ? 
+            <div className="downloadBtnContainer">
+              <button onClick={downloadQR} className="btn">Download QR code</button>
+            </div>
+            : null
+          }
+        </div>
+      </div>      
     </div>
   );
 }

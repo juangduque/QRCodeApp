@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {Fragment, useState} from "react";
 import Tabs from "./Tabs";
 import ScanArea from "./ScanArea.jsx";
 
-import "../style/app.css";
+
+import "../style/css/app.css";
+import Prueba from "./Prueba.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -64,8 +66,20 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
-        <h1>You can make several QR code</h1>
+      <Fragment>
+        {/* <Prueba /> */}
+        <header className="center-align headerSection">
+          <h1>Generate your QR code</h1>
+          <h2>You can generate multiple QR codes from the files you upload, the files can be images or PDF.</h2>
+        </header>
+
+        {/* <ScanArea 
+          url={ this.state.url1 } 
+          onChange={ this.handleChange1 }
+          fileName={ this.state.fileName1 }
+          fileNameOnChange={ this.handleFileNameChange1 }
+          location={ this.state.location1 }
+        /> */}
         <Tabs>
           <div label="QR Code 1">
             <ScanArea 
@@ -95,7 +109,19 @@ class App extends React.Component {
             />
           </div>
         </Tabs>
-      </div>
+        
+        <div className="cardContainer">
+          <div className="card horizontal">
+            <div className="card-stacked">
+              <div className="card-content">
+                <p className="cardText">You can update the file uploaded just by uploading other.</p>
+              </div>              
+            </div>
+          </div>
+        </div>
+
+            
+      </Fragment>
     );
   }
 }
