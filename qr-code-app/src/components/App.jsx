@@ -1,10 +1,9 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment} from "react";
+
 import Tabs from "./Tabs";
 import ScanArea from "./ScanArea.jsx";
 
-
 import "../style/css/app.css";
-import Prueba from "./Prueba.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +26,7 @@ class App extends React.Component {
     this.handleFileNameChange2 = this.handleFileNameChange2.bind(this);
     this.handleFileNameChange3 = this.handleFileNameChange3.bind(this);
   };
+
 
   handleChange1 = value => {
     this.setState({
@@ -67,19 +67,10 @@ class App extends React.Component {
   render(){
     return (
       <Fragment>
-        {/* <Prueba /> */}
         <header className="center-align headerSection">
           <h1>Generate your QR code</h1>
           <h2>You can generate multiple QR codes from the files you upload, the files can be images or PDF.</h2>
         </header>
-
-        {/* <ScanArea 
-          url={ this.state.url1 } 
-          onChange={ this.handleChange1 }
-          fileName={ this.state.fileName1 }
-          fileNameOnChange={ this.handleFileNameChange1 }
-          location={ this.state.location1 }
-        /> */}
         <Tabs>
           <div label="QR Code 1">
             <ScanArea 

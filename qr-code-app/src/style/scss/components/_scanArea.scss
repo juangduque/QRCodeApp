@@ -22,9 +22,11 @@ form{
   max-width: 600px;
   width: 98%;
   margin: 20px auto;
+  z-index: 0;
   & .fileInput{
     height: 30px;
     width: calc(100% - 70px);
+    z-index: 0;
   }
   & .fileLabel{
     font-size: 1.5rem;

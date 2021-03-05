@@ -1,22 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import {app} from '../js/fireBaseConfig.js';
-import Modal from './Modal.jsx';
-
-import uploadIcon from '../assets/img/uploadIcon.png';
-import errorIcon from '../assets/img/errorIcon.png';
-
 
 const FileUpload = ( props ) => {
+  let uploadAdvice = "";
   const [file, setFile] = useState('');
-  const [modalIsOpen, setModal] = useState(false);
-
-  const buttonHandler = () => {
-    setModal(current => !current)
-  }
-
-  useEffect( () => {
-  }, [modalIsOpen]);
-
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -34,7 +21,7 @@ const FileUpload = ( props ) => {
     }).catch( err => {
       alert( err.message ); // PONER MODAL
     })
-    console.log("File uploaded sucessfully");
+    alert("uploaded file");
   }
 
   const onSubmit = async e => {
@@ -49,7 +36,7 @@ const FileUpload = ( props ) => {
           // prevFile = list.items[0]._delegate._location.path_
           
           if( list.items[0]._delegate === undefined){
-            console.log("There is nothing uploaded in the storage yet")
+            alert("There is nothing uploaded")
           }else{
             prevFile = list.items[0]._delegate._location.path_
             storageRef = app.storage().ref().child( prevFile );
@@ -57,7 +44,7 @@ const FileUpload = ( props ) => {
               console.log( "Deleted" );
               uploadFile();        
             }).catch( err => {
-              console.error( err.message );// PONER MODAL
+              alert( err.message );// PONER MODAL
             });
           }        
         }).catch( err => {
@@ -66,9 +53,9 @@ const FileUpload = ( props ) => {
         
 
       }else if( file.name === undefined){
-        console.error("You haven't selected a file"); 
+        alert("You haven't selected file"); // PONER MODAL
       }else{
-        console.error("File format don't allowed, must be pdf, png, jpg or jpeg");// PONER MODAL
+        alert("File format don't allowed, must be pdf, png, jpg or jpeg");// PONER MODAL
       }
     } catch (err) {
       alert(err.message);
@@ -91,32 +78,10 @@ const FileUpload = ( props ) => {
         </div>
 
         <input
-          onClick={ buttonHandler } 
           type='submit'
           value='Upload'
           className='btn uploadButton'
         />
-        <Modal onOpen={ modalIsOpen } onClose={ buttonHandler }>
-          {
-          props.fileName !== "Choose file" ? 
-            <div className="modalContent">
-              <img src={ uploadIcon } alt="Upload sucessfully icon"/>
-              <h4 className="center-align">Your file has been uploaded, now the QR code is being generated ...</h4>
-              <button onClick={ buttonHandler } className="btn green">
-                OK
-              </button>
-            </div>
-          :
-            <div className="modalContent">
-              <img src={ errorIcon } alt="Error icon"/>
-              <h4 className="center-align">You haven't selected a file</h4>
-              <button onClick={ buttonHandler } className="btn red">
-                OK
-              </button>
-            </div>
-          }
-        </Modal>
-
       </form>
     </Fragment>
   );
