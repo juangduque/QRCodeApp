@@ -37,7 +37,6 @@ class ScanArea extends React.Component {
   };
 
   render(){
-    console.log(this.props.url)
     return (
       <div className="scanAreaContainer">
         {/* Upload file section */}
@@ -48,6 +47,7 @@ class ScanArea extends React.Component {
           location={ this.props.location } 
           handleUploadTrue={ this.setLoadingTrue }
           handleUploadFalse={ this.setLoadingFalse }
+          loading={ this.state.loading }
         />
         
         {/* QR Section */}

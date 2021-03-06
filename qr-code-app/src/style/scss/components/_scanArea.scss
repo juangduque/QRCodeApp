@@ -53,6 +53,9 @@ form{
 }
 
 .displayQRCodeContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 308px;
   width: 308px;
   border: 2px solid black;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/css/pages/pageLoading.css';
+import '../style/css/loader.css';
 
 function Loader() {
   return (
