@@ -17,7 +17,7 @@ const firebaseConfig = {
   authDomain: "yourAuthDomain",
   projectId: "yourProjectId",
   storageBucket: "yourStorageBucket",
-  messagingSenderId: "284210827483",
+  messagingSenderId: "yourMessagingSenderId",
   appId: "yourAppId"
 };
 ```
