@@ -31,7 +31,7 @@ npm run start
 ```
 
 ## Live demo
-In the following [link](https://qrcodeapp-official.web.app/) you can see the app.
+In the following [link](https://qrcodeapp-official.web.app/) you can see the app deployed on Firebase.
 
 ## License
 This is an open initiative under [MIT license](https://opensource.org/licenses/MIT).
